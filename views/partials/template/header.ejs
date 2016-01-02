@@ -1,0 +1,22 @@
+<header>
+  <div class="navigation">
+    <section class="layout">
+      <ul class="nav">
+        <li><a href="/"><i class="fa fa-home"></i> Strona Startowa</a></li>
+        <li><a href="/speakers"><i class="fa fa-male"></i> Działy/Tematy</a></li>
+        <!-- Edycja Artykułu: script.js -> PUT /speakers -> redirect: '/addart?_id='....  -->
+        <li><a href="/addart" id="edit_article_a"><i class="fa fa-pencil-square-o"></i> Edycja Artykułu</a></li>
+        <li><a href="/chatroom" id="chat_room_a"><i class="fa fa-weixin"></i> Chat Room</a></li>
+        <li><a href="/"><i></i></a></li>
+        <li><a href="/"><i></i></a></li>
+        <li><a href="/"><i></i></a></li>
+        <% if( username ) { %>
+            <li><a href="/login/logout"><%= 'Wyloguj: ' + username %><i class="fa fa-sign-out" id="login_button"></i></a></li>
+        <% } else { %>
+
+            <li><a href="/login"><i class="fa fa-paw" id="login_button"></i> Zaloguj Się</a></li>
+        <% } %>
+      </ul><!-- nav -->
+    </section><!-- layout -->
+  </div><!-- navigation -->
+</header>

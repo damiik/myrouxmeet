@@ -1,0 +1,29 @@
+{
+   "social" : [{
+    "shortname" : "twitter",
+    "img" : "/images/socialmedia2/t.png",
+    "url" : "https://twitter.com/darekmikolaj"
+  },{
+    "shortname" : "facebook",
+    "img" : "/images/socialmedia2/f.png",
+    "url" : "https://pl-pl.facebook.com/people/Dariusz-Miko%C5%82ajczyk/1240606808"
+  },{
+    "shortname" : "google-plus",
+    "img" : "/images/socialmedia2/google.png",
+    "url" : "https://plus.google.com/+DariuszMiko%C5%82ajczyk_pl"
+  },{
+    "shortname" : "youtube",
+    "img" : "/images/socialmedia2/y.png",
+    "url" : "https://www.youtube.com/user/Dargorad2/"
+  }],
+
+  "meeting" : {
+    "date": "Thursday, March 27th",
+    "time": "6-9pm",
+    "where": {
+      "name": "Hotel Gwendoline",
+      "img": "/images/misc/hotel_gwendoline.jpg",
+      "address": "123 Elm Street"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<!-- 
+   for home and articlesList pages
+{
+
+  title: 'Home',
+  artwork: myArtwork,
+  articles_list: articles,
+  page: 'home'
+}
+
+-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<article class="speakerslist">
+  <section class="layout">
+    <div class="speakers" align="left">
+      <% articles_list.forEach(function(item) { %>
+        <article class="artist group"><span>
+          <h3><%= item.title %> </h3>
+          <h5><a href="/speakers/<%= item.shortname %>"><%= item.name %></a></h5></span>
+          <p><a href="/speakers/<%= item.shortname %>">
+            <img class="speaker" src="/images/speakers/<%= item.shortname %>_tn.jpg" alt="Photo of <%= item.name %>"></a>
+            <% if (page!= 'home') { %>
+              <% if (page === 'articlesList') { %>
+                <%- item.summary %>
+              <% } else { %>
+                  <div class="article_body"
+                    <%- item.description %>
+                  </div>
+                <!--<button type="button", class="btnEditArticle" data-button= "_id=<%- item._id %>" >Edit Article</button> -->
+              <% } %>
+            <% } %>
+          </a></p>
+        </article>
+        <% if(page === 'articlesList') { %> 
+          <br><br><br><br><br><br>
+        <% } %>
+      <% }); %> 
+
+    </div>
+  </section>
+</article>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head><% include partials/template/head.ejs %>
+    <script src='javascripts/tinymce/tinymce.min.js'></script>
+    <script>tinymce.init({
+    selector: 'textarea',
+    content_css : 'stylesheets/style.css',  // resolved to http://domain.mine/mycontent.css
+    statusbar: false,
+    height: 500,
+    width : 900,
+    plugins: [
+      'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen',
+      'insertdatetime media nonbreaking save table contextmenu directionality',
+      'emoticons template paste textcolor colorpicker textpattern imagetools'
+    ],
+    toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+    toolbar2: 'print preview media | forecolor backcolor emoticons',
+    image_advtab: true,
+    paste_auto_cleanup_on_paste : true,
+    remove_linebreaks: false, //true,
+    convert_newlines_to_brs: false,
+    inline_styles : false,
+    apply_source_formatting:true,
+    entity_encoding: 'named',
+    entities:'169,copy, 8482,trade, 8211, ndash, 8212,mdash, 8216,lsquo, 8217,rsquo, 8220,ldquo, 8221,rdquo, 8364,euro',
+    relative_urls: false,
+
+    templates : [
+      {
+        title: "Abbreviation",
+        content: '<abbr title="rolling on the floor, laughing out loud">That joke had me ROTFLOL </abbr>',
+        description: "Abbreviation"
+      }
+    ],
+
+
+    //entities: '160,nbsp',
+    //paste_postprocess : function(pl, o) {
+        // remove extra line breaks
+        //o.node.innerHTML = o.node.innerHTML.replace(/&nbsp;/ig, " ");
+    //}
+
+    // not work -- to remove
+    cleanup_callback: function my_cleanup_callback(type,value) {
+      switch (type) {
+        case 'get_from_editor':
+          // Remove &nbsp; characters
+          value = value.replace(/&nbsp;/ig, ' ');
+          break;
+        case 'insert_to_editor':
+        case 'submit_content':
+        case 'get_from_editor_dom':
+                  // Remove &nbsp; characters
+          value = value.replace(/&nbsp;/ig, ' ');
+        case 'insert_to_editor_dom':
+        case 'setup_content_dom':
+        case 'submit_content_dom':
+        default:
+          break;
+      }
+      return value;
+    }
+
+
+    });</script>
+
+  </head>
+  <body class="<%= page %>">
+    <% include partials/template/header.ejs %>
+    <section class="layout">
+    <div class="container">
+        <h1> Edytuj Treść: </h1>
+          <div class="controls controls-row", >
+           <button style='width: 400px; margin-right: 120px;', class = "btn btn-large btn-success" , id = "btnUpdateArticle"><i class="fa fa-check"></i> Zapisz</button> 
+            <div class="btn-group">
+              <button class = "btn btn-large btn-primary", id = "btnNewArticle"><i class="fa fa-book"></i> Nowy Artykuł</button> 
+              <button class = "btn btn-large btn-danger", id = "btnDeleteArticle"><i class="fa fa-times"></i> Usuń Artykuł</button>
+              <button class = "btn btn-large btn-primary", id = "btnEditUsers"><i class="fa fa-cog"></i> Edytuj dostęp</button>
+            </div>
+          </div>
+
+
+        <!-- action= /addart  jump to /addart -->
+        <!-- POST sends the form-data as an HTTP post transaction -->
+        <form name="addart", method="post",action="/arts" class= "art_edit_form">
+          <fieldset>
+            <div style='height:16px;'></div>
+            <!--<div class="column" class = "art_textinput">-->
+            <!-- </div> -->
+
+            <textarea class = "art_textarea" name="description" id="description" placeholder= "treść.." ><%= article.description %>"</textarea>
+            <div style='clear:both; height:20px;'></div>
+            <label style='width: 130px; display: inline-block; text-align:right; padding-right: 7px;'>Klucz Art.: </label><input type="text" style='width:270px;' class = "art_textinput" name="_id" id="_id" value="<%= article._id %>">
+            <label style='width: 120px; display: inline-block; text-align:right; padding-right: 7px;'>Numer Art.: </label><input type="text" style='width:275px;' class = "art_textinput" name="art_no" id="art_no" value="<%= article.art_no %>"><br>
+            <label style='width: 130px; display: inline-block; text-align:right; padding-right: 7px;'>Tytuł: </label><input type="text" style='width:270px;display: inline-block;' class = "art_textinput" name="title" id="title" value="<%= article.title %>">
+            <label style='width: 120px; display: inline-block; text-align:right; padding-right: 7px;'>Tag: </label><input type="text" style='width:275px;display: inline-block;' class = "art_textinput" name="shortname" id="shortname" value="<%= article.shortname %>"><br>
+            <label style='width: 130px; display: inline-block; text-align:right; padding-right: 7px;'>Grupa Art.: </label><input type="text" style='width:670px;' class = "art_textinput" name="name" id="name" value="<%= article.name %>"><br>
+            <label style='width: 130px; display: inline-block; text-align:right; padding-right: 7px;'>Opis Art.: </label><input type="text" style='width:670px;' class = "art_textinput" name="summary" id="summary" value="<%= article.summary %>"><br>
+          </fieldset>
+        </form> 
+      </div> 
+<!--       <div>
+          <select id="example-select"></select>
+      </div> -->
+    </section>
+    <% include partials/template/footer.ejs %>
+    <% include partials/template/jsdefaults.ejs %>
+  </body>
+</html>
+
