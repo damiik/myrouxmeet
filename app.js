@@ -49,6 +49,32 @@ var http = require('http');
 // mongodb - ustawić w programie process.env.IP zamiast localhost
 
 
+// basic git:
+// git clone   local <--- github
+// git fetch   local <--- github (update changes from other persons before push)
+// git push    local ---> github
+
+// git fetch origin
+// git merge origin/change_01  (merge locally origin with change_01 from github)
+// git commit -m "...."
+// git push origin master (push locally origin to master on github)
+// git push origin change_02 (push locally origin to change_02 on github)
+
+// git branch change_02  (create new brach/not needed - used checkout instead)
+// git checkout change_02 (move to branch/ now all locall changes are stored in change_02 branch)
+// git checkout master (back to master branch/ back locally files to master!!)
+// git merge change_02 (merge change_02 branch with master)
+// git branch -d change_02 (remove not used branch)
+
+//git config --global user.name damiik
+//git config --global user.email damii@poczta.onet.pl
+//git init
+//git remote add origin
+//git remote add origin git@github.com:damiik/myrouxmeet.git
+
+//git add .
+//git commit -m "change bootstrap path"
+//git push -u origin master  (git push myfork change_01)
 
 
 var db = monk('damii:damii86@ds037185.mongolab.com:37185/damii');
@@ -83,6 +109,7 @@ var db = monk('damii:damii86@ds037185.mongolab.com:37185/damii');
   }]
 
 */
+
 
 app = express(); // witout var app is global now and accesible in routes (if routes are below this line)
 
@@ -146,9 +173,10 @@ app.use( flash() ); // use connect-flash for flash messages stored in session
 
 
 
-// serve all files from public folder
+// Define folders to serve all files..
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, 'bower_components/bootstrap/dist')));
+app.use(express.static(path.join(__dirname, 'bower_components/jquery/dist')));
 
 // Make our db accessible to our router
 app.use(function(req, res, next) {
@@ -207,6 +235,22 @@ app.use(function(err, req, res, next) {
 });
 
 
+/*
+events.js:141
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: read ECONNRESET
+    at exports._errnoException (util.js:874:11)
+    at TCP.onread (net.js:544:26)
+*/
+
+// catching error "read ECONNRESET --> http://stackoverflow.com/questions/17245881/node-js-econnreset"
+process.on('uncaughtException', function (err) {
+  
+  console.error(err.stack);
+  console.log("Node NOT Exiting...");
+});
 
 
 module.exports = app;

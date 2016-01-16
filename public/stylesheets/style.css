@@ -5,9 +5,13 @@
 /*@import url(https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica);*/
 @import url(https://fonts.googleapis.com/css?family=Neuton:400,400italic,700&subset=latin,latin-ext);
 @import url(https://fonts.googleapis.com/css?family=Averia+Gruesa+Libre&subset=latin,latin-ext);
-@import url(https://fonts.googleapis.com/css?family=Crete+Round:400,400italic&subset=latin,latin-ext);
+
 @import url(https://fonts.googleapis.com/css?family=Arbutus+Slab&subset=latin,latin-ext);
 
+
+@import url(https://fonts.googleapis.com/css?family=Crete+Round:400,400italic&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700&subset=latin,latin-ext);
 
 /*@import url("http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css");*/
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
@@ -324,7 +328,7 @@ header .navigation {
 
 /*  background: #124b5e;*/
  background: #082d1e;
-   box-shadow: 2px 2px 2px #606060;
+   box-shadow: 4px 4px 4px #707080;
 }
 
 header .navigation ul.nav li {

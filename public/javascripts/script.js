@@ -4,7 +4,6 @@
 // DOM Ready =============================================================
 $(document).ready(function() { // here you don't know what document is ready but if you read some element of body you will know this..
 
-
     var datatable = $('#usertable').dataTable(  {      
 
       // "ajax": {
@@ -490,8 +489,38 @@ function getPosition(element) {
 }
 
 
+function pad10( n ) {
+  
+  return (n < 10) ? '0' + n : n;
+}
 
 
+// For todays date;
+Date.prototype.today = function () { 
+  
+  return pad10( this.getDate() ) + "/" + pad10( this.getMonth()+1 ) + "/" + this.getFullYear();
+}
+
+// For the time now 12h
+Date.prototype.time12Now = function() { 
+  
+  return pad10( this.getHours() ) + ":" + pad10( this.getMinutes() ) + ":" + pad10( this.getSeconds() ) + ((this.getHours() > 12) ? ('PM') : 'AM'); 
+};
+
+// For the time now
+Date.prototype.timeNow = function() { 
+  
+  return pad10( this.getHours() ) + ":" + pad10( this.getMinutes() ) + ":" + pad10( this.getSeconds() ); 
+};
+
+
+function dateTime() {
+  
+  var currentdate = new Date();
+  return (
+    currentdate.today() + " @ " + 
+    currentdate.timeNow());
+}
 
 
     // sticky top menu

@@ -10,77 +10,70 @@
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       /*body { font: 13px Helvetica, Arial; }   width: 65%;  width: 100%;*/
-      form { background: #208060; padding: 3px; position: fixed; bottom: 0;  width: 65%; }
-      form input { border: 0; padding: 10px;  margin-right: .5%; width: 100%;}
+      form { background: #208060; padding: 3px; position: fixed; bottom: 0;  width: 65%; font-family: 'Open Sans', sans-serif;}
+      form input { border: 0; padding: 10px;  margin-right: .5%; width: 100%; font-size: 90%; }
       form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0;  font-family: 'Open Sans', sans-serif; font-size: 90% ;}
+      #messages li { padding: 5px 10px; word-wrap: break-word;}
       #messages li:nth-child(odd) { background: #eee; }
       #notifyUser { position: fixed; bottom: 100px; width: 100%; }
     </style>
 <div class="container">
 	<h1><span class="fa fa-weixin"></span> Chat Room.. :)</h1>
-	<h5><div class="row-fluid">
-		<label class="control-label col-sm-2 col-sm-offset-7" style="text-align:right;">Nie masz konta?</label>
-		<a class="btn btn-warning col-sm-3" type="button" href="/login/signup"><i class="fa fa-user-plus"></i> Dodaj użytkownika</a> 
-	</div></h5>
+	<h5>
+	  <div class="row-fluid">
+  		<label class="control-label col-sm-2 col-sm-offset-7" style="text-align:right;">Nie masz konta?</label>
+  		<a class="btn btn-warning col-sm-3" type="button" href="/login/signup"><i class="fa fa-user-plus"></i> Dodaj użytkownika</a> 
+	  </div>
+	</h5>
     <div class="col-sm-12">
   	<div style='height:64px;'></div>   
-    
-    
     <ul id="messages"></ul>
     <span id="notifyUser"></span>
     <div style='height:128px;'></div>   
     <form  action="">
       <p id="p_username_id"> <%= username %> </p>
-      <input id="input_message_id" autocomplete="off" onkeyup="notifyTyping();" />
+      <input id="input_message_id" autocomplete="off" autofocus onkeyup="notifyTyping();" />
     </form>
-    
   </div>
 </div>
 </section>  
     
-    <!--<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>-->
     <script src='socket.io/socket.io.js'></script>
-
-    <!--<script src="http://code.jquery.com/jquery-1.11.1.js"></script>-->
     <% include partials/template/jsdefaults.ejs %>
     <script>
-    
-      //var socket = io(); //demo-project-damii.c9users.io
-      //var socket = io.connect('https://demo-project-c9-damii.c9.io');
+
       var socket = io.connect('https://demo-project-damii.c9users.io');
-      //var socket = io.connect("https://appName-c9-userName.c9.io");
+
+      // on enter hit (input_message_id)
       $( 'form' ).submit(function() {
         
-        socket.emit('chat message', '<strong>' + document.getElementById('p_username_id').innerHTML + '</strong># ' + $( '#input_message_id' ).val());
+        socket.emit('chat message', '<b style="font-size: 80%; font-family: Crete Round, sans-serif;">' + (new Date().timeNow()) + document.getElementById('p_username_id').innerHTML + '\>  </b>' + $( '#input_message_id' ).val());
         $('#input_message_id').val('');
         $('html, body').animate({
           
-          scrollTop: 100000000//$('#messages').offset().top
-             //scrollTop: $('#your-id').offset().top
-             //scrollTop: $('.your-class').offset().top
+          scrollTop: 100000000
         }, 'slow');
         return false;
       });
       
+      // on keyup (input_message_id)
+      function notifyTyping() { 
+        
+        var user = document.getElementById('p_username_id').innerHTML; //$('#user').val();
+        socket.emit('notifyUser', user);
+      }
       
+      
+      // on message from chat
       socket.on('chat message', function( msg ) {
         
         console.log( msg );
         $( '#messages' ).append( '<li>' + msg + '</li>' );
         $('html, body').animate({
           
-          scrollTop: 10000000//$('#messages').offset().top
-             //scrollTop: $('#your-id').offset().top
-             //scrollTop: $('.your-class').offset().top
+          scrollTop: 10000000
         }, 'slow');
-        
-        
-        // var myDiv = $("#div_id").get(0);
-        // myDiv.animate({
-        // scrollTop: myDiv.scrollHeight
-        // }, 500);
       });
       
       // socket.on('chatMessage', function(from, msg){
@@ -90,7 +83,7 @@
       //   $('#messages').append('<li><b style="color:' + color + '">' + from + '</b>: ' + msg + '</li>');
       // });
  
-      
+      // on notifyuser message from chat
       socket.on('notifyUser', function( user ){
         
         var me = document.getElementById('p_username_id').innerHTML;
@@ -102,16 +95,17 @@
         setTimeout(function(){ $('#notifyUser').text(''); }, 2000);
       });
       
-      function notifyTyping() { 
+      // on documnet change (user leave chatroom)
+      $(window).bind('beforeunload', function() {
         
-        var user = document.getElementById('p_username_id').innerHTML; //$('#user').val();
-        socket.emit('notifyUser', user);
-      }
+        socket.emit('chat message', '<i class="fa fa-arrow-left"></i><b style="color:#ff2000; font-family: Crete Round, sans-serif;"> ' + (new Date().timeNow()) + document.getElementById('p_username_id').innerHTML + '</b> opuścił chatroom..');
+      });
       
-      
-      $(document).ready(function(){
+      // on document ready (user go to chatroom)
+      $( document ).ready(function() {
         
-        socket.emit('chat message', '<strong>' + document.getElementById('p_username_id').innerHTML + '</strong> dołączył do dyskusji..');
+
+        socket.emit('chat message', '<i class="fa fa-arrow-right"></i><b style="color:#008f20; font-family: Crete Round, sans-serif;"> ' + (new Date().timeNow()) + document.getElementById('p_username_id').innerHTML + '</b> dołączył do dyskusji..');
       });
       
     </script>
