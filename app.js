@@ -54,7 +54,7 @@ var http = require('http');
 // git fetch   local <--- github (update changes from other persons before push)
 // git push    local ---> github
 
-// git fetch origin
+// git fetch origin  (fetch origin from github to locall)
 // git merge origin/change_01  (merge locally origin with change_01 from github)
 // git commit -m "...."
 // git push origin master (push locally origin to master on github)
@@ -62,9 +62,10 @@ var http = require('http');
 
 // git branch change_02  (create new brach/not needed - used checkout instead)
 // git checkout change_02 (move to branch/ now all locall changes are stored in change_02 branch)
+// edit firles...
 // git checkout master (back to master branch/ back locally files to master!!)
 // git merge change_02 (merge change_02 branch with master)
-// git branch -d change_02 (remove not used branch)
+// git branch -d change_02 (remove branch if no more used)
 
 //git config --global user.name damiik
 //git config --global user.email damii@poczta.onet.pl
@@ -75,6 +76,8 @@ var http = require('http');
 //git add .
 //git commit -m "change bootstrap path"
 //git push -u origin master  (git push myfork change_01)
+//git push origin HEAD (push the current branch to the same name on the remote)
+//git push -u origin HEAD:bootstrap_update -f (force changes to bootstrap_update branch)
 
 
 var db = monk('damii:damii86@ds037185.mongolab.com:37185/damii');

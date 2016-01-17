@@ -1,17 +1,23 @@
 @import url("http://fonts.googleapis.com/css?family=Bree+Serif|Merriweather:400,300,700,900");
-@import url(https://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic);
-@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic);
-@import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400italic);
+/*@import url(https://fonts.googleapis.com/css?family=Bitter:400,400italic,700&subset=latin,latin-ext);*/
+
+
+/*@import url(https://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic);*/
+/*@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic);*/
+/*@import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400italic);*/
 /*@import url(https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica);*/
-@import url(https://fonts.googleapis.com/css?family=Neuton:400,400italic,700&subset=latin,latin-ext);
-@import url(https://fonts.googleapis.com/css?family=Averia+Gruesa+Libre&subset=latin,latin-ext);
+/*@import url(https://fonts.googleapis.com/css?family=Neuton:400,400italic,700&subset=latin,latin-ext);*/
+/*@import url(https://fonts.googleapis.com/css?family=Averia+Gruesa+Libre&subset=latin,latin-ext);*/
 
-@import url(https://fonts.googleapis.com/css?family=Arbutus+Slab&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Arbutus+Slab&subset=latin,latin-ext); /*cite, blockquote*/
 
 
-@import url(https://fonts.googleapis.com/css?family=Crete+Round:400,400italic&subset=latin,latin-ext);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,latin-ext);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:700&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Crete+Round:400,400italic&subset=latin,latin-ext); /*body H5*/
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,latin-ext);*/
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans:700&subset=latin,latin-ext);*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&subset=latin,latin-ext);/*H4 for chat: latin-ext, bold*/
+
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&subset=latin,latin-ext); /*H6 for chat: latin-ext, bold*/
 
 /*@import url("http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css");*/
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
@@ -51,7 +57,9 @@ cite, q, blockquote {
 }
 
 blockquote {
-    box-shadow: 3px 3px 5px #888888;
+    -webkit-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    -moz-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
 }
 
 html {
@@ -83,9 +91,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /*color_def*/
 body {
+  
+
+/*width: 1600px;*/
+
   /*font-family: Bree Serif, serif;*/
   /*font-family: 'Averia Gruesa Libre', cursive;*/
   font-family: 'Crete Round', serif;
+
   font-size: 1.2rem;
   line-height: 125%;
   /*background: #eae3cb;*/
@@ -94,14 +107,10 @@ body {
   color: #0a2933;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: Bree Serif, serif;
-  font-weight: normal;
-  /*color: #475b62;*/
-  /*text-shadow: #80a4af 2px 2px 2px;*/
-}
 
 h1 {
+  font-family: Bree Serif, serif;
+  font-weight: normal;
   font-size: 1.6rem;
   color: #0f4f5e;
   margin-bottom: .4rem;
@@ -122,6 +131,8 @@ h1 {
 
 h2 {
   /*font-family: 'Averia Gruesa Libre', cursive;*/
+  font-family: Bree Serif, serif;
+  font-weight: normal;
   font-size: 1.4rem;
   line-height: 120%;
   margin: 20px 0 0 0;
@@ -129,23 +140,38 @@ h2 {
   text-shadow: #bab3ab 1px 1px;
 }
 
+
 /*color_def*/
 h3 {
   /*font-family: 'Averia Gruesa Libre', cursive;*/
+  font-family: Bree Serif, serif;
+  font-weight: normal;
   font-size: 1.7rem;
   line-height: 60%;
   color: #ad2603;
   text-shadow: #80a4af 2px 2px 2px;
 }
 
+h4 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: normal;
+}
+
+
 h5 {
   /*color: #1f5f6e;*/
-   font-family: 'Crete Round', serif;
+  font-family: 'Crete Round', serif;
+  font-weight: normal;
   font-size: 1.1rem;
   line-height: 180%;
   text-shadow: #80a4af 2px 2px 2px;
 }
 
+
+h6 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: normal;
+}
 /*color_def*/
 a {
 
@@ -165,21 +191,22 @@ p {
 
 /*color_def*/
 .small {
+
   font-size: 1.2rem;
   color: #0f4f5e;
   text-shadow: #bab3ab 1px 1px;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+/** {*/
+/*  -webkit-box-sizing: border-box;*/
+/*  -moz-box-sizing: border-box;*/
+/*  box-sizing: border-box;*/
+/*}*/
 
 .layout {
   *zoom: 1;
-  max-width: 61em;
-  _width: 61em;
+  max-width: 76em; /*main width*/
+  /*_width: 61em;*/
   padding-left: 1em;
   padding-right: 1em;
   margin-left: auto;
@@ -222,7 +249,16 @@ footer {
   border-radius: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
-  box-shadow: 3px 3px 5px #888888;
+    -webkit-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    -moz-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+}
+
+.speakers img:hover {
+  
+  
+  
+    box-shadow: none;
 }
 
 .article_body img {
@@ -230,7 +266,9 @@ footer {
     float: none;
     border: 4px solid white;
     padding: 1px;
-    box-shadow: 3px 3px 5px #888888;
+    -webkit-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    -moz-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
@@ -243,7 +281,9 @@ iframe {
     float: none;
     border: 4px solid white;
     padding: 1px;
-    box-shadow: 3px 3px 5px #888888;
+    -webkit-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    -moz-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
@@ -288,7 +328,9 @@ iframe {
   width: 30%;
   max-width: 120px;
   cursor: pointer;
-  box-shadow: 3px 3px 5px #888888;
+  -webkit-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.67);
+  -moz-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.67);
+  box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.67);
 }
 
 .pixgrid img:hover {
@@ -328,7 +370,9 @@ header .navigation {
 
 /*  background: #124b5e;*/
  background: #082d1e;
-   box-shadow: 4px 4px 4px #707080;
+    -webkit-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    -moz-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
 }
 
 header .navigation ul.nav li {
@@ -372,7 +416,7 @@ header .navigation ul.nav li:hover a {
   background: #dad300;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 67em) {
   .layout .primary {
     width: 66.10169%;
     float: left;
@@ -494,14 +538,16 @@ header .navigation ul.nav li:hover a {
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
-    box-shadow: 1px 1px 1px #009090;
+    -webkit-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    -moz-box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
+    box-shadow: 3px 3px 22px 0px rgba(0,0,0,0.47);
   }
 
   .home .speakerslist img.speaker:hover {
     
-    -webkit-box-shadow:inset 5px 5px 5px #010101;
-    -moz-box-shadow:inset 5px 5px 5px #010101;
-    box-shadow:inset 5px 5px 5px #010101;
+    -webkit-box-shadow: 3px 3px 22px 0px rgba(100,100,0,0.47);
+    -moz-box-shadow: 3px 3px 22px 0px rgba(100,100,0,0.47);
+    box-shadow: 3px 3px 22px 0px rgba(100,100,0,0.47);
   }
 
 

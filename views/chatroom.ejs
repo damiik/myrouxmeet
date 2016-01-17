@@ -11,7 +11,14 @@
       * { margin: 0; padding: 0; box-sizing: border-box; }
       /*body { font: 13px Helvetica, Arial; }   width: 65%;  width: 100%;*/
       form { background: #208060; padding: 3px; position: fixed; bottom: 0;  width: 65%; font-family: 'Open Sans', sans-serif;}
-      form input { border: 0; padding: 10px;  margin-right: .5%; width: 100%; font-size: 90%; }
+      form input { 
+        
+        border: 0; padding: 10px;  margin-right: .5%; width: 100%; font-size: 90%; 
+        -webkit-box-shadow: 3px 3px 12px 5px rgba(0,0,0,0.67);
+        -moz-box-shadow: 3px 3px 12px 5px rgba(0,0,0,0.67);
+        box-shadow: 3px 3px 12px 5px rgba(0,0,0,0.67);
+      }
+      
       form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0;  font-family: 'Open Sans', sans-serif; font-size: 90% ;}
       #messages li { padding: 5px 10px; word-wrap: break-word;}
