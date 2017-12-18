@@ -14,7 +14,7 @@
     "datatables.net": "^1.10.10",
     "datatables.net-bs": "^1.10.10",
     "debug": "~2.2.0",
-    "ejs": "~2.3.3",
+    "ejs": "~> 2.5.5",
     "express": "~4.13.1",
     "express-session": "^1.12.1",
     "http": "0.0.0",
